@@ -15,18 +15,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const fs_1 = require("fs");
 const sharp_1 = __importDefault(require("sharp"));
+const caching_1 = __importDefault(require("./caching"));
 const resize = express_1.default.Router();
+resize.use(caching_1.default);
 resize.get('/', (req, res) => {
     try {
         const filename = req.query.filename;
-        const width = req.query.width;
-        const height = req.query.height;
-        const image = (0, sharp_1.default)(filename);
+        const width = parseInt(req.query.width);
+        const height = parseInt(req.query.height);
+        const fullPath = `assets/full/${filename}`;
+        const image = (0, sharp_1.default)(fullPath);
         image
             .resize({ width: width, height: height })
             .toBuffer()
             .then((data) => __awaiter(void 0, void 0, void 0, function* () {
-            const makeFile = fs_1.promises.open(`${filename}_${width}x${height}`, 'w+');
+            const makeFile = fs_1.promises.open(`assets/thumb/${filename}_${width}x${height}.jpg`, 'w+');
             (yield makeFile).writeFile(data);
         }));
         res.send('Converting file in process');

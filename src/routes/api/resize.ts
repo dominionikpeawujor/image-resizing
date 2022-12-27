@@ -9,15 +9,14 @@ resize.use(caching);
 resize.get('/', (req: express.Request, res: express.Response) => {
   try {
     const filename = req.query.filename;
-    const width = req.query.width;
-    const height = req.query.height as unknown as number;
+    const width:number = parseInt(req.query.width);
+    const height: number = parseInt(req.query.height);
 
-    const neww = parseInt(width);
     const fullPath = `assets/full/${filename}`;
     const image = sharp(fullPath);
 
     image
-      .resize({ width: neww, height: height })
+      .resize({ width: width, height: height })
       .toBuffer()
       .then(async (data) => {
         const makeFile = fs.open(
