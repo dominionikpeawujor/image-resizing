@@ -9,8 +9,8 @@ resize.use(caching);
 resize.get('/', (req: express.Request, res: express.Response) => {
   try {
     const filename = req.query.filename;
-    const width:number = parseInt(req.query.width);
-    const height: number = parseInt(req.query.height);
+    const width:number = parseInt((req.query.width as unknown) as string);
+    const height: number = parseInt((req.query.height as unknown) as string);
 
     const fullPath = `assets/full/${filename}`;
     const image = sharp(fullPath);
