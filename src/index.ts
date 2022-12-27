@@ -6,7 +6,6 @@ const app = express();
 const port = 3000;
 
 app.use('/api', [logger, api]);
-// app.use()
 
 app.get('/', (req, res) => {
   res.send('server connected');
