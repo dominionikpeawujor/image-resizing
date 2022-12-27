@@ -20,14 +20,14 @@ describe('The First Test', () => {
         const response = yield request.get('/');
         expect(response.status).toBe(200);
     }));
+    it('Tests if the api endpoint works ', () => __awaiter(void 0, void 0, void 0, function* () {
+        const response = yield request.get('/api');
+        expect(response.status).toBe(200);
+    }));
 });
 describe('The Second Test', () => {
     it('Tests if the image processing works', () => __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield request.get('/api/?filename=img.jpg&height=200&width=200');
+        const response = yield request.get('/api/resize?filename=img.jpg&height=200&width=200');
         expect(response.status).toBe(200);
-    }));
-    it('Tests if it throws an error for an Invalid URL', () => __awaiter(void 0, void 0, void 0, function* () {
-        const response = yield request.get('/?filname=');
-        expect(response.status).toBeGreaterThanOrEqual(400);
     }));
 });
