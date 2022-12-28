@@ -21,14 +21,14 @@ resize.get('/', (req: express.Request, res: express.Response) => {
     const fileDir = `assets/thumb/${filename}`;
 
     //Using the sharp module
-    const image = sharp(fullPath);
+    const image = sharp(path.resolve(fullPath));
 
     //Resizing pictures
     image
       .resize({ width: width, height: height })
       .toBuffer()
       .then(async (data) => {
-        const makeFile = fs.open(fileDir, 'w+');
+        const makeFile = fs.open(path.resolve(fileDir), 'w+');
         (await makeFile).writeFile(data);
       })
       .then(() => res.sendFile(path.resolve(fileDir)));

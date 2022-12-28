@@ -16,7 +16,7 @@ const caching = (
   }${file.slice(-4)}`;
 
   //Conidition for serving cached files (using the existsSync method)
-  const fileExists: boolean = existsSync(filePath);
+  const fileExists: boolean = existsSync(path.resolve(filePath));
 
   try {
     if (fileExists) {
