@@ -6,7 +6,7 @@ const processing = async (request: {
   file: string;
   width: string | number;
   height: string | number;
-}) => {
+}): Promise<string>=> {
   try {
     const file = request.file;
     const width = parseInt(request.width as unknown as string);

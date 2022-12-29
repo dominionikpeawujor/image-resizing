@@ -6,7 +6,7 @@ const validation = express();
 
 validation.get(
   '/',
-  (req: express.Request, res: express.Response, next: NextFunction) => {
+  (req: express.Request, res: express.Response, next: NextFunction): void => {
     try {
       const file = req.query.filename as unknown as string;
 
