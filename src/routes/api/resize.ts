@@ -14,9 +14,16 @@ resize.get(
       const width: number = parseInt(req.query.width as unknown as string);
       const height: number = parseInt(req.query.height as unknown as string);
 
+      width === undefined
+        ? res.send('incorrect parameters. Expected "width" in parameter')
+        : '';
+      height === undefined
+        ? res.send('incorrect parameters. Expected "height" in parameter')
+        : '';
+
       const request = { file: file, width: width, height: height };
       const filepath = await processing(request);
-      
+
       res.sendFile(path.resolve(filepath));
     } catch (err) {
       throw `${err} from resize`;

@@ -2,7 +2,7 @@ import path from 'path';
 import sharp from 'sharp';
 import { promises as fs } from 'fs';
 
-const processing =  async (request: {
+const processing = async (request: {
   file: string;
   width: number;
   height: number;
@@ -27,7 +27,7 @@ const processing =  async (request: {
         const makeFile = fs.open(path.resolve(fileDir), 'w+');
         (await makeFile).writeFile(data);
       });
-      
+
     return path.resolve(fileDir);
   } catch (err) {
     throw `${err}`;
