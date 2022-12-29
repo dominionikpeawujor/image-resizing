@@ -19,7 +19,7 @@ describe('The First Test', () => {
 
 describe('The Second Test', () => {
   it('Tests if the image processing works', async () => {
-    expect(processing(details)).not.toThrow();
+    expect(processing(details)).toBeDefined();
   });
 
   it('Tests if the image processing request from server works', async () => {

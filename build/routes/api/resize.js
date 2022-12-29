@@ -23,6 +23,12 @@ resize.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const file = req.query.filename;
         const width = parseInt(req.query.width);
         const height = parseInt(req.query.height);
+        width === undefined
+            ? res.send('incorrect parameters. Expected "width" in parameter')
+            : '';
+        height === undefined
+            ? res.send('incorrect parameters. Expected "height" in parameter')
+            : '';
         const request = { file: file, width: width, height: height };
         const filepath = yield (0, resize_processing_1.default)(request);
         res.sendFile(path_1.default.resolve(filepath));
