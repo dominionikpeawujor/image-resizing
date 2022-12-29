@@ -13,8 +13,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const supertest_1 = __importDefault(require("supertest"));
+const resize_processing_1 = __importDefault(require("../functionalities/resize-processing"));
 const index_1 = __importDefault(require("../index"));
 const request = (0, supertest_1.default)(index_1.default);
+const details = { "file": 'img.jpg', "width": 250, "height": 500 };
+const filename = `${details.file}_${details.width}x${details.height}.jpg`;
+const fileDir = `assets/thumb/${filename}`;
 describe('The First Test', () => {
     it('Tests if the root endpoint works ', () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield request.get('/');
@@ -27,6 +31,9 @@ describe('The First Test', () => {
 });
 describe('The Second Test', () => {
     it('Tests if the image processing works', () => __awaiter(void 0, void 0, void 0, function* () {
+        expect((0, resize_processing_1.default)(details)).not.toBeFalse();
+    }));
+    it('Tests if the image processing request from server works', () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield request.get('/api/resize?filename=img.jpg&height=200&width=200');
         expect(response.status).toBe(200);
     }));
