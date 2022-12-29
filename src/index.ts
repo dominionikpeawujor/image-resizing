@@ -7,10 +7,10 @@ const port = 3000;
 
 app.use('/api', [logger, api]);
 
-app.get('/', (req, res) => {
+app.get('/', (req: express.Request, res: express.Response) => {
   res.send('server connected');
 });
 
-app.listen(port, () => console.log(`Listening at port ${port}`));
+app.listen(port, (): void => console.log(`Listening at port ${port}`));
 
 export default app;

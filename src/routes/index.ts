@@ -4,7 +4,7 @@ import resize from './api/resize';
 const routes = express.Router();
 routes.use('/resize', resize);
 
-routes.get('/', (req, res) => {
+routes.get('/', (req: express.Request, res: express.Response): void => {
   res.send('routes connected');
 });
 
