@@ -10,16 +10,6 @@ const caching = (
   //filename parameters from 'req' object
   const file = req.query.filename as unknown as string;
 
-  file === undefined
-    ? res.send('incorrect parameters. Expected "filename" parameter in URL')
-    : '';
-  req.query.width === undefined
-    ? res.send('incorrect parameters. Expected "width" parameter in URL')
-    : '';
-  req.query.height === undefined
-    ? res.send('incorrect parameters. Expected "height" paramete" in URL')
-    : '';
-
   //File path to get image
   const filePath = `assets/thumb/${file}_${req.query.width}x${
     req.query.height

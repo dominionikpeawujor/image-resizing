@@ -3,7 +3,7 @@ import processing from '../functionalities/resize-processing';
 import app from '../index';
 
 const request = supertest(app);
-const details = { file: 'img.jpg', width: 250, height: 500 };
+const details = { file: 'img.jpg', width: 250, height: '500' };
 
 describe('The First Test', () => {
   it('Tests if the root endpoint works ', async () => {

@@ -18,13 +18,14 @@ const fs_1 = require("fs");
 const processing = (request) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const file = request.file;
-        const width = request.width;
-        const height = request.height;
+        const width = parseInt(request.width);
+        const height = parseInt(request.height);
         const fullPath = `assets/full/${file}`;
         const filename = `${file}_${width}x${height}.jpg`;
         const fileDir = `assets/thumb/${filename}`;
         //Using the sharp module
         const image = (0, sharp_1.default)(path_1.default.resolve(fullPath));
+        console.log(typeof (width));
         //Resizing pictures
         yield image
             .resize({ width: width, height: height })
@@ -36,7 +37,7 @@ const processing = (request) => __awaiter(void 0, void 0, void 0, function* () {
         return path_1.default.resolve(fileDir);
     }
     catch (err) {
-        throw `${err}`;
+        throw `${err} from processing`;
     }
 });
 exports.default = processing;

@@ -16,24 +16,20 @@ const express_1 = __importDefault(require("express"));
 const caching_1 = __importDefault(require("../../middleware/caching"));
 const resize_processing_1 = __importDefault(require("../../functionalities/resize-processing"));
 const path_1 = __importDefault(require("path"));
+const validation_1 = __importDefault(require("../../middleware/validation"));
 const resize = (0, express_1.default)();
-resize.use(caching_1.default);
+resize.use(validation_1.default, caching_1.default);
 resize.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const file = req.query.filename;
-        const width = parseInt(req.query.width);
-        const height = parseInt(req.query.height);
-        width === undefined
-            ? res.send('incorrect parameters. Expected "width" in parameter')
-            : '';
-        height === undefined
-            ? res.send('incorrect parameters. Expected "height" in parameter')
-            : '';
+        const width = req.query.width;
+        const height = req.query.height;
         const request = { file: file, width: width, height: height };
         const filepath = yield (0, resize_processing_1.default)(request);
         res.sendFile(path_1.default.resolve(filepath));
     }
     catch (err) {
+        res.send('Invalid parameters. Check the parameters.');
         throw `${err} from resize`;
     }
 }));

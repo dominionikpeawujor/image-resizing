@@ -4,13 +4,13 @@ import { promises as fs } from 'fs';
 
 const processing = async (request: {
   file: string;
-  width: number;
-  height: number;
+  width: string | number;
+  height: string | number;
 }) => {
   try {
     const file = request.file;
-    const width = request.width;
-    const height = request.height;
+    const width = parseInt(request.width as unknown as string);
+    const height = parseInt(request.height as unknown as string);
 
     const fullPath = `assets/full/${file}`;
     const filename = `${file}_${width}x${height}.jpg`;
@@ -30,7 +30,7 @@ const processing = async (request: {
 
     return path.resolve(fileDir);
   } catch (err) {
-    throw `${err}`;
+    throw `${err} from processing`;
   }
 };
 
