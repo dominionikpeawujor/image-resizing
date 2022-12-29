@@ -9,8 +9,8 @@ const processing =  async (request: {
 }) => {
   try {
     const file = request.file;
-    const width: number = request.width;
-    const height: number = request.height;
+    const width = request.width;
+    const height = request.height;
 
     const fullPath = `assets/full/${file}`;
     const filename = `${file}_${width}x${height}.jpg`;
