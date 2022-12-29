@@ -2,11 +2,11 @@ import path from 'path';
 import sharp from 'sharp';
 import { promises as fs } from 'fs';
 
-const processing = async (request: {
+const processing =  async (request: {
   file: string;
   width: number;
   height: number;
-}): Promise<string> => {
+}) => {
   try {
     const file = request.file;
     const width: number = request.width;

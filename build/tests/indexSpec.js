@@ -31,7 +31,7 @@ describe('The First Test', () => {
 });
 describe('The Second Test', () => {
     it('Tests if the image processing works', () => __awaiter(void 0, void 0, void 0, function* () {
-        expect((0, resize_processing_1.default)(details)).not.toBeFalse();
+        expect((0, resize_processing_1.default)(details)).toBeDefined();
     }));
     it('Tests if the image processing request from server works', () => __awaiter(void 0, void 0, void 0, function* () {
         const response = yield request.get('/api/resize?filename=img.jpg&height=200&width=200');

@@ -19,11 +19,16 @@ const path_1 = __importDefault(require("path"));
 const resize = (0, express_1.default)();
 resize.use(caching_1.default);
 resize.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const file = req.query.filename;
-    const width = parseInt(req.query.width);
-    const height = parseInt(req.query.height);
-    const request = { file: file, width: width, height: height };
-    const filepath = yield (0, resize_processing_1.default)(request);
-    res.sendFile(path_1.default.resolve(filepath));
+    try {
+        const file = req.query.filename;
+        const width = parseInt(req.query.width);
+        const height = parseInt(req.query.height);
+        const request = { file: file, width: width, height: height };
+        const filepath = yield (0, resize_processing_1.default)(request);
+        res.sendFile(path_1.default.resolve(filepath));
+    }
+    catch (err) {
+        throw `${err} from resize`;
+    }
 }));
 exports.default = resize;

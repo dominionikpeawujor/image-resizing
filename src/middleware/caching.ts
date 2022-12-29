@@ -6,7 +6,7 @@ const caching = (
   req: express.Request,
   res: express.Response,
   next: NextFunction
-) => {
+): void => {
   //filename parameters from 'req' object
   const file = req.query.filename as unknown as string;
 
