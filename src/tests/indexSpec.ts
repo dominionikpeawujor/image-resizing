@@ -5,10 +5,6 @@ import app from '../index';
 const request = supertest(app);
 const details = {"file": 'img.jpg' ,"width": 250, "height":500 }
 
-const filename = `${details.file}_${details.width}x${details.height}.jpg`;
-const fileDir = `assets/thumb/${filename}`;
-
-
 describe('The First Test', () => {
   it('Tests if the root endpoint works ', async () => {
     const response = await request.get('/');
