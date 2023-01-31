@@ -25,7 +25,6 @@ const processing = (request) => __awaiter(void 0, void 0, void 0, function* () {
         const fileDir = `assets/thumb/${filename}`;
         //Using the sharp module
         const image = (0, sharp_1.default)(path_1.default.resolve(fullPath));
-        console.log(typeof (width));
         //Resizing pictures
         yield image
             .resize({ width: width, height: height })

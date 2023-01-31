@@ -7,7 +7,7 @@ const port = 3000;
 
 app.use('/api', [logger, api]);
 
-app.get('/', (req: express.Request, res: express.Response): void => {
+app.get('/', (_req: express.Request, res: express.Response): void => {
   res.send('server connected');
 });
 
