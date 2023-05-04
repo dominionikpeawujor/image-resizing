@@ -17,4 +17,7 @@ The following parameters need to be accurately passed into the URL to avoid erro
 - *width*
 - *height*
 
+# Important things to note
+- When you clone this repository, you would need to place the picture you want to resize in the `"full"` Folder. That way, when you are using this programme to resize the image through the given endpoint, the system is aware of what the filename is.
+
 **Hope you enjoy this application 😉**
