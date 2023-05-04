@@ -9,7 +9,7 @@ To build the application, run <code>npm run build</code>.
 To test the application, run <code>npm run test</code>.
 
 # Endpoints
-The main endpoint for this application is: `/api/resize?filename=**The file to resize**&width=**The width you want**&height=**The height you want**`
+The main endpoint for this application is: `/api/resize?filename=<The file to resize>&width=<The width you want>&height=<The height you want>`
 
 # Parameters
 The following parameters need to be accurately passed into the URL to avoid errors:
